@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ page.title }}</title>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <meta name="description" content="Append block" />
+    <meta name="keywords" content="javascript, dynamic, grid, layout, jquery plugin, flex layouts"/>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"><link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../brickwork.js"></script>
+  </head>
+  <body>
+    <div class="navbar" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Brick Work</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="/whats-new">What's New</a></li>
+            <li><a href="#contact">Get Started</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features <b class="caret"></b></a>
+              <ul  class="dropdown-menu">
+                <li> <a href="">Draggable support</a></li>
+                <li> <a href="">Direction support </a></li>
+                <li> <a href="">Custom plugin</a></li>
+                <li> <a href="">Responsive grid </a></li>
+                <li> <a href="">Gaps control </a></li> 
+                <li> <a href="">Filter items </a></li>
+                <li> <a href="">CSS3 animation (js fallback) </a></li>
+                <li> <a href="">Nested grid </a></li>
+                <li> <a href="">Images grid/layout </a></li>
+                <li> <a href="">Fit container </a></li>
+                <li> <a href="">Vertical grid/layout </a></li>
+                <li> <a href="">Horizontal grid/layout </a></li>
+                <li> <a href="">Window 8 metro style </a></li>
+                <li> <a href="">Pinterest like grid/layout </a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Examples <b class="caret"></b></a>
+              <ul  class="dropdown-menu">
+                <li> <a href="">Flexible layout</a></li>
+                <li> <a href="">Images Show </a></li>
+                <li> <a href="">Pinterest</a></li>
+                <li> <a href="">Metro Style </a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+
+    <div class="container">
+      {{content}}
+    </div>
+  </body>
+</html>
