@@ -1,3 +1,8 @@
 name: Brick Work
 markdown: redcarpet
 pygments: true
+safe: true
+lsi: false
+source: ./
+permalink: none
+relative_permalinks: false

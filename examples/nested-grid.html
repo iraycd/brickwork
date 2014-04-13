@@ -1,0 +1,128 @@
+---
+layout: example
+title: Brick Work - Nest Grid - Example
+description: Nested Grid with bricks
+---
+<style type="text/css">
+      .layout {
+        margin: 2em 15px;
+        color: #333;
+      }
+      .size320 {
+        width: 320px;
+        height: 320px;
+      }
+      .size44 {
+        width: 100%;
+        height: 100%;
+      }
+      .size22 {
+        width: 50%;
+        height: 50%;
+      }
+      .size14 {
+        width: 25%;
+        height: 100%;
+      }
+      .size41 {
+        width: 100%;
+        height: 25%;
+      }
+      .size24 {
+        width: 50%;
+        height: 100%;
+      }
+      .size42 {
+        width: 100%;
+        height: 50%;
+      }
+    </style>
+
+    <div class="layout">
+      <h2>Nested grid</h2>
+      <div class="brick-work">
+        <div class="size320" data-nested=".level-1" data-gutterX=10 data-gutterY=10 data-cellW=0.5 data-cellH=0.5 >
+          <div class="brick level-1 size24"></div>
+          <div class="brick level-1 size24"></div>
+        </div>
+        <div class="size320" data-nested=".level-1"  data-gutterX=10 data-gutterY=10 data-cellW=0.5 data-cellH=0.5 >
+          <div class="brick level-1 size42"></div>
+          <div class="brick level-1 size42"></div>
+        </div>
+        <div class="size320" data-nested=".level-1"  data-gutterX=10 data-gutterY=10 data-cellW=0.5 data-cellH=0.5 >
+          <div class="brick level-1 size24"></div>
+          <div class="brick level-1 size22"></div>
+          <div class="brick level-1 size22"></div>
+        </div>
+        <div class="size320" data-nested=".level-1" data-gutterX=10 data-gutterY=10 data-cellW=0.5 data-cellH=0.5 >
+          <div class="brick level-1 size42"></div>
+          <div class="brick level-1 size22"></div>
+          <div class="brick level-1 size22"></div>
+        </div>
+        <div class="size320" data-nested=".level-1"  data-gutterX=10 data-gutterY=10 data-cellW=0.5 data-cellH=0.5 >
+          <div class="brick level-1 size22"></div>
+          <div class="brick level-1 size24"></div>
+          <div class="brick level-1 size22"></div>
+        </div>
+        <div class="size320" data-nested=".level-1"  data-gutterX=10 data-gutterY=10 data-cellW=0.5 data-cellH=0.5 >
+          <div class="brick level-1 size22"></div>
+          <div class="brick level-1 size22"></div>
+          <div class="brick level-1 size22"></div>
+          <div class="brick level-1 size22"></div>
+        </div>
+      </div>
+    </div>
+    <div class="layout">
+      <h2>Normal grid</h2>
+      <div class="brick-work">
+        <div class="brick size320"></div>
+        <div class="brick size320"></div>
+        <div class="brick size320"></div>
+        <div class="brick size320"></div>
+        <div class="brick size320"></div>
+        <div class="brick size320"></div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      
+      var colour = [
+        "rgb(142, 68, 173)",
+        "rgb(243, 156, 18)",
+        "rgb(211, 84, 0)",
+        "rgb(0, 106, 63)",
+        "rgb(41, 128, 185)",
+        "rgb(192, 57, 43)",
+        "rgb(135, 0, 0)",
+        "rgb(39, 174, 96)"
+      ];
+      
+      $(".brick-work .size320").each(function() {
+        var backgroundColor = colour[colour.length * Math.random() << 0];
+        var bricks = $(this).find(".brick");
+        !bricks.length && (bricks = $(this));
+        bricks.css({
+          backgroundColor: backgroundColor
+        });
+      });
+
+      $(function() {
+        $(".brick-work").each(function() {
+          var brick = new brickwork(this);
+          brick.reset({
+            selector: '.size320',
+            cellW: 320,
+            cellH: 320,
+            fixSize: 0,
+            gutterY: 20,
+            gutterX: 20,
+            onResize: function() {
+              brick.fitWidth();
+            }
+          })
+          brick.fitWidth();
+        });
+        $(window).trigger("resize");
+      });
+
+    </script>
+    

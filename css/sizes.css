@@ -1,0 +1,79 @@
+.size2-2 {
+	width: 80px;
+	height: 80px;
+}
+
+.size11 {
+	height: 160px;
+	width: 160px;
+}
+
+.size12 {
+	width: 160px;
+	height: 320px;
+}
+
+.size21 {
+	width: 320px;
+	height: 160px;
+}
+
+.size22 {
+	height: 320px;
+	width: 320px;
+}
+
+.size13 {
+	width: 160px;
+	height: 480px;
+}
+
+.size31 {
+	width: 480px;
+	height: 160px;
+}
+
+.size23 {
+	width: 320px;
+	height: 480px;
+}
+
+.size24 {
+	width: 320px;
+	height: 640px;
+}
+
+.size32 {
+	width: 480px;
+	height: 320px;
+}
+
+.size33 {
+	width: 480px;
+	height: 480px;
+}
+
+.size34 {
+	width: 480px;
+	height: 640px;
+}
+
+.size43 {
+	width: 640px;
+	height: 480px;
+}
+
+.size35 {
+	width: 480px;
+	height: 800px;
+}
+
+.size53 {
+	width: 800px;
+	height: 480px;
+}
+
+.size36 {
+	width: 480px;
+	height: 960px;
+}

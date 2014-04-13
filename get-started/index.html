@@ -1,0 +1,128 @@
+---
+layout: default
+title: Get Started
+description: An overview of Brickwork, how to download and use, basic techniques and examples, and more.
+---
+
+  <style type="text/css">
+    .item{
+      background-color: #0099cc;
+      color:white;
+    }
+    .item .cover{
+      padding:1.5em 0.8em;
+    }
+    .item a{
+      color: #fff;
+    }
+    .item a:hover{
+      color: #eee;
+    }
+  </style>
+
+  <div class='page-header hero'>
+    <h1>{{page.title}}</h1>
+    <p>{{page.description}}</p>
+  </div>
+  <div class="container">
+    <h2 id="download" >Download</h2>
+    <div class="wall text-center">
+      <div class="item col-sm-4">
+        <div class="cover">
+          <a href="https://raw.githubusercontent.com/iraycd/brickwork/master/brickwork.min.js" target="_blank">
+            <i class="fa fa-download fa-5x"></i>
+          </a>
+          <p>Compiled and minified JavaScript. No docs or original source files are included.</p>
+        </div>
+      </div>
+      <div class="item col-sm-4">
+        <div class="cover">
+          <a href="https://github.com/iraycd/brickwork/archive/v1.0.zip" target="_blank">
+            <i class="fa fa-code fa-5x"></i>
+          </a>
+          <p>Source JavaScript. Requires a Node and NPM and some setup.</p>
+          
+        </div>
+      </div>
+      <div class="item col-sm-4">
+        <div class="cover">
+          <a href="https://github.com/iraycd/brickwork">
+            <i class="fa fa-github fa-5x"></i>
+          </a>
+          <p>Brickwork is completely a javascript project. Everyone is welcomed to contribute</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container">
+    <h2>Examples</h2>
+    Coming Soon...
+  </div>
+
+  <div class="container">
+    <h2>Community</h2>
+    <div class="wall text-center">
+      <div class="item col-sm-4">
+        <div class="cover">
+          <a href="https://github.com/iraycd/brickwork/commits">
+            <i class="fa fa-clock-o fa-5x"></i>
+          </a>
+          <h4> Up to date while developing brickwork, You can reach out us for any kind of help.</h4>
+        </div>
+      </div>
+      <div class="item col-sm-4">
+        <div class="cover">
+          <i class="fa fa-html5 fa-5x"></i>
+          <p>Blog. Coming Soon..</p>
+        </div>
+      </div>
+      <div class="item col-sm-4">
+        <div class="cover">
+          <a href="http://stackoverflow.com/questions/tagged/brick-work">
+            <i class="fa fa-stack-overflow fa-5x"></i>
+          </a>
+          <p>If you have a question, ask on StackOverflow using the tag brick-work.</p>
+        </div>
+      </div>
+      <div class="item col-sm-4">
+        <div class="cover">
+          <i class="fa fa-desktop fa-5x"></i>
+          <p>Find inspiring examples. Coming Soon</p>
+        </div>
+      </div>
+      <div class="item col-sm-4">
+        <div class="cover">
+          <a href="https://twitter.com/iraycd">
+            <i class="fa fa-twitter fa-5x"></i>
+          </a>
+          <p>You can also follow @iraycd to knowing more about dynamic layout and mastering responsive web design.</p>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+
+
+
+  <script>
+    $(function() {
+        $(".wall").each(function() {
+          var brick = new brickwork(this);
+          brick.reset({
+            selector: '.item',
+            cellW: 'auto',
+            cellH: 'auto',
+            fixSize: 0,
+            gutterY: 20,
+            gutterX: 20,
+            onResize: function() {
+              brick.fitWidth();
+            }
+          });
+          brick.fitWidth();
+        });
+        $(window).trigger("resize");
+      });
+  </script>

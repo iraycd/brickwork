@@ -1,0 +1,106 @@
+---
+layout: example
+title: Brick Work - Fit Zone - Example
+description: Aligning the bricks in the complete window like in metro style
+---
+<style type="text/css">
+  html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .layout {
+    position: absolute;
+    right: 0px;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    padding: 15px;
+    overflow: hidden;
+    height:100%;
+  }
+  .header {
+    height: 100%;
+  }
+  .brick-work {
+    width: 100%;
+    height: 100%;
+  }
+
+  @keyframes start {
+    from {
+      transform: scale(0);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+
+  @-webkit-keyframes start {
+    from {
+      -webkit-transform: scale(0);
+    }
+    to {
+      -webkit-transform: scale(1);
+    }
+  }
+
+  .brick-work .brick[data-state="init"] {
+    display: none;
+  }
+
+  .brick-work .brick[data-state="start"]  {
+    display: block;
+    animation: start 0.5s;
+    -webkit-animation: start 0.5s;
+  }
+
+  .brick-work .brick[data-state="move"]  {
+    transition: top 0.5s, left 0.5s, width 0.5s, height 0.5s;
+    -webkit-transition: top 0.5s, left 0.5s, width 0.5s, height 0.5s;
+  }
+</style>
+
+
+  <div id="brickwork" class="brick-work"></div>
+
+<script type="text/javascript">
+  var temp = "<div class='brick' style='width:{width}px; height: {height}px; background-color: {color}'><div class='cover'>Demo fit zone</div></div>";
+  var colour = [
+    "rgb(142, 68, 173)",
+    "rgb(243, 156, 18)",
+    "rgb(211, 84, 0)",
+    "rgb(0, 106, 63)",
+    "rgb(41, 128, 185)",
+    "rgb(192, 57, 43)",
+    "rgb(135, 0, 0)",
+    "rgb(39, 174, 96)"
+  ];
+
+  var w = 1, h = 1, html = '', color = '', limitItem = 28;
+  for (var i = 0; i < limitItem; ++i) {
+    h = 1 + 3 * Math.random() << 0;
+    w = 1 + 3 * Math.random() << 0;
+    color = colour[colour.length * Math.random() << 0];
+    html += temp.replace(/\{height\}/g, h*150).replace(/\{width\}/g, w*150).replace("{color}", color);
+  }
+  $("#brickwork").html(html);
+  
+
+  $(function() {
+    var brick = new brickwork("#brickwork");
+    brick.reset({
+      selector: '.brick',
+      animate: false,
+      cellW: 160,
+      cellH: 160,
+      delay: 30,
+      onResize: function() {
+        brick.refresh($(window).width() - 30, $(window).height() - 30);
+      }
+    });
+    // caculator width and height for IE7;
+    brick.fitZone($(window).width() - 30 , $(window).height() - 30);
+  });
+</script>

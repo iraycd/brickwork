@@ -1,0 +1,36 @@
+---
+layout: example
+title: Brick Work - Image Layout - Example
+description: Images layouts with brickwork
+---
+
+<div id="brickwork" class="brick-work"></div>
+
+<script type="text/javascript">
+ 
+      var temp = "<div class='cell' style='width:{width}px; height:{height}px; background-image: url(http://lorempixel.com/{width}/300/{type}/{index}/)'></div>";
+  var w = 1, html = '', limitItem = 49;
+
+      var type = "abstract animals business cats city food nightlife fashion people nature sports transport".split(" ")
+  for (var i = 0; i < limitItem; ++i) {
+    index = 1 + 10 * Math.random() << 0;
+    w = 200 +  200 * Math.random() << 0;
+    html += temp.replace(/\{height\}/g, 200).replace(/\{width\}/g, w).replace("{index}", index)
+                .replace("{type}",type[type.length * Math.random() << 0]);
+  }
+  $("#brickwork").html(html);
+  
+  var brick = new brickwork("#brickwork");
+  brick.reset({
+    selector: '.cell',
+    animate: true,
+    cellW: 20,
+    cellH: 200,
+    onResize: function() {
+      brick.fitWidth();
+    }
+  });
+  brick.fitWidth();
+  // for scroll bar appear;
+  $(window).trigger("resize");
+</script>
