@@ -1,4 +1,5 @@
 # [BrickWork](http://iraycd.github.io/brickwork/)
+[![Build Status](https://travis-ci.org/iraycd/brickwork.svg?branch=master)](https://travis-ci.org/iraycd/brickwork)
 
 BrickWork is a reponsive jQuery plugin to create Dynamic layouts. The main goal is to create the best and most customizable dynamic layouts plugins. When uglifid the code is `15KB`.
 
