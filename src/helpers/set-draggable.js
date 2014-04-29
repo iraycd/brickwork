@@ -1,4 +1,5 @@
-function setDraggable(item) {
+setDraggable = function(item,setting) {
+    var runtime = setting.runtime
     var gutterX = runtime.gutterX;
     var gutterY = runtime.gutterY;
     var cellH = runtime.cellH;
@@ -63,4 +64,4 @@ function setDraggable(item) {
             control.refresh();
         }
     });
-}
+};

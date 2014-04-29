@@ -14,7 +14,6 @@
     
     //= layout-manager.js
     //= layout_manager
-    //= helpers
     //= engine.js
 
     window.brickwork = function(selector) {
@@ -81,6 +80,7 @@
 
         //= controls
         
+        //= helpers
         container.attr('data-min-width', Math.floor($W.width() / 80) * 80);
         // execute plugins;
         for (var i in layoutManager.plugin) {

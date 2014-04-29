@@ -1,7 +1,7 @@
 /**
  * brickwork - BrickWork is a reponsive jQuery plugin to create Dynamic layouts
  * @version v1.0.0
- * @link iraycd.github.io/brickwork
+ * @link http://iraycd.github.io/brickwork
  * @license MIT
  * @author Ray Ch
  */
@@ -544,72 +544,6 @@
     
         setting.delay > 0 ? (item.delay = setTimeout(action, setting.delay * $item.attr("data-delay"))) : action(); 
     }
-    function setDraggable(item) {
-        var gutterX = runtime.gutterX;
-        var gutterY = runtime.gutterY;
-        var cellH = runtime.cellH;
-        var cellW = runtime.cellW;
-        var $item = $(item);
-        var handle = $item.find($item.attr("data-handle"));
-        layoutManager.setDraggable(item, {
-            handle: handle[0],
-            onStart: function(event) {
-                if (setting.animate && layoutManager.transition) {
-                    layoutManager.setTransition(this, "");
-                }
-                $item.css('z-index', 9999).addClass('fw-float');
-            },
-            onDrag: function(evt, tracker) {
-                var position = $item.position();
-                var top = Math.round(position.top / cellH);
-                var left = Math.round(position.left / cellW);
-                var width = Math.round($item.width() / cellW);
-                var height = Math.round($item.height() / cellH);
-                top = Math.min(Math.max(0, top), runtime.limitRow - height);
-                left = Math.min(Math.max(0, left), runtime.limitCol - width);
-                control.setHoles({top: top, left: left, width: width, height: height});
-                control.refresh();
-            },
-            onDrop: function() {
-                var position = $item.position();
-                var top = Math.round(position.top / cellH);
-                var left = Math.round(position.left / cellW);
-                var width = Math.round($item.width() / cellW);
-                var height = Math.round($item.height() / cellH);
-                top = Math.min(Math.max(0, top), runtime.limitRow - height);
-                left = Math.min(Math.max(0, left), runtime.limitCol - width);
-    
-                $item.removeClass('fw-float');
-                $item.css({
-                    zIndex: "auto",
-                    top: top * cellH,
-                    left: left * cellW
-                });
-                
-                //check old drag element;
-                var x, y, key, oldDropId;
-                for (y = 0; y < height; ++y) {
-                    for (x = 0; x < width; ++x) {
-                        key = (y + top) + "-" + (x + left);
-                        oldDropId = runtime.matrix[key];
-                        if (oldDropId && oldDropId != true) {
-                            $("#" + oldDropId).removeAttr("data-position");
-                        }
-                    }
-                }
-                
-                runtime.holes = {};
-                
-                $item.attr({
-                    "data-width": $item.width(),
-                    "data-height": $item.height(),
-                    "data-position": top + "-" + left
-                });
-    
-                control.refresh();
-            }
-        });
-    }
     var engine = {
         // Giot just a person name;
         giot: function(items, setting) {
@@ -852,7 +786,7 @@
             allBlock.each(function(index, item) {
                 layoutManager.showBlock(item, setting);
                 if (setting.draggable || item.getAttribute('data-draggable')) {
-                    setDraggable(item);
+                    setDraggable(item,setting);
                 }
             });
         }
@@ -982,7 +916,7 @@
             allBlock.each(function(index, item) {
                 layoutManager.showBlock(item, setting);
                 if (setting.draggable || item.getAttribute('data-draggable')) {
-                    setDraggable(item);
+                    setDraggable(item,setting);
                 }
             });
         }
@@ -1029,7 +963,7 @@
             allBlock.each(function(index, item) {
                 layoutManager.showBlock(item, setting);
                 if (setting.draggable || item.getAttribute('data-draggable')) {
-                    setDraggable(item);
+                    setDraggable(item,setting);
                 }
             });
         }
@@ -1075,7 +1009,7 @@
             allBlock.each(function(index, item) {
                 layoutManager.showBlock(item, setting);
                 if (setting.draggable || item.getAttribute('data-draggable')) {
-                    setDraggable(item);
+                    setDraggable(item,setting);
                 }
             });
         }
@@ -1172,6 +1106,73 @@
             return this;
         }
         
+        setDraggable = function(item,setting) {
+            var runtime = setting.runtime
+            var gutterX = runtime.gutterX;
+            var gutterY = runtime.gutterY;
+            var cellH = runtime.cellH;
+            var cellW = runtime.cellW;
+            var $item = $(item);
+            var handle = $item.find($item.attr("data-handle"));
+            layoutManager.setDraggable(item, {
+                handle: handle[0],
+                onStart: function(event) {
+                    if (setting.animate && layoutManager.transition) {
+                        layoutManager.setTransition(this, "");
+                    }
+                    $item.css('z-index', 9999).addClass('fw-float');
+                },
+                onDrag: function(evt, tracker) {
+                    var position = $item.position();
+                    var top = Math.round(position.top / cellH);
+                    var left = Math.round(position.left / cellW);
+                    var width = Math.round($item.width() / cellW);
+                    var height = Math.round($item.height() / cellH);
+                    top = Math.min(Math.max(0, top), runtime.limitRow - height);
+                    left = Math.min(Math.max(0, left), runtime.limitCol - width);
+                    control.setHoles({top: top, left: left, width: width, height: height});
+                    control.refresh();
+                },
+                onDrop: function() {
+                    var position = $item.position();
+                    var top = Math.round(position.top / cellH);
+                    var left = Math.round(position.left / cellW);
+                    var width = Math.round($item.width() / cellW);
+                    var height = Math.round($item.height() / cellH);
+                    top = Math.min(Math.max(0, top), runtime.limitRow - height);
+                    left = Math.min(Math.max(0, left), runtime.limitCol - width);
+        
+                    $item.removeClass('fw-float');
+                    $item.css({
+                        zIndex: "auto",
+                        top: top * cellH,
+                        left: left * cellW
+                    });
+                    
+                    //check old drag element;
+                    var x, y, key, oldDropId;
+                    for (y = 0; y < height; ++y) {
+                        for (x = 0; x < width; ++x) {
+                            key = (y + top) + "-" + (x + left);
+                            oldDropId = runtime.matrix[key];
+                            if (oldDropId && oldDropId != true) {
+                                $("#" + oldDropId).removeAttr("data-position");
+                            }
+                        }
+                    }
+                    
+                    runtime.holes = {};
+                    
+                    $item.attr({
+                        "data-width": $item.width(),
+                        "data-height": $item.height(),
+                        "data-position": top + "-" + left
+                    });
+        
+                    control.refresh();
+                }
+            });
+        };
         container.attr('data-min-width', Math.floor($W.width() / 80) * 80);
         // execute plugins;
         for (var i in layoutManager.plugin) {

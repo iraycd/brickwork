@@ -40,7 +40,7 @@ control.fitZone= function(width, height) {
     allBlock.each(function(index, item) {
         layoutManager.showBlock(item, setting);
         if (setting.draggable || item.getAttribute('data-draggable')) {
-            setDraggable(item);
+            setDraggable(item,setting);
         }
     });
 }
