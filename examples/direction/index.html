@@ -1,0 +1,54 @@
+---
+layout: example
+title: Brick Work - Direction - Example 
+description: Direction from right to left.
+---
+
+    <div id="brickwork" class="brick-work">
+      <div class="brick size11"> 
+        <div class='cover'>
+          <p>Render from right</p>
+        </div>
+      </div>  
+      <div class="brick size11"> 
+      </div>
+      <div class="brick size11">
+        <div class='cover'>
+          <p>Right to left support</p>
+        </div>
+      </div>
+    </div>
+    
+    <script type="text/javascript">
+      
+      var colour = [
+        "rgb(142, 68, 173)",
+        "rgb(243, 156, 18)",
+        "rgb(211, 84, 0)",
+        "rgb(0, 106, 63)",
+        "rgb(41, 128, 185)",
+        "rgb(192, 57, 43)",
+        "rgb(135, 0, 0)",
+        "rgb(39, 174, 96)"
+      ];
+
+      $(".brick").each(function() {
+        this.style.backgroundColor =  colour[colour.length * Math.random() << 0];
+      });
+
+      $(function() {
+        var brick = new brickwork("#brickwork");
+        brick.reset({
+          selector: '.brick',
+          animate: true,
+          cellW: 160,
+          cellH: 160,
+          delay: 50,
+          rightToLeft: true,
+          onResize: function() {
+            brick.fitWidth();
+          }
+        });
+        brick.fitWidth();
+      });
+    </script>

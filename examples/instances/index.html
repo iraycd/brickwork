@@ -1,0 +1,104 @@
+---
+layout: example
+title: Brick Work - Instances - Example
+description: Running more than one intances
+---
+
+    <style type="text/css">
+      .layout {
+        margin: 2em 15px;
+        color: #333;
+      }
+      .size320 {
+        width: 320px;
+        height: 320px;
+      }
+      .size44 {
+        width: 100%;
+        height: 100%;
+      }
+      .size22 {
+        width: 50%;
+        height: 50%;
+      }
+      .size14 {
+        width: 25%;
+        height: 100%;
+      }
+      .size41 {
+        width: 100%;
+        height: 25%;
+      }
+      .size24 {
+        width: 50%;
+        height: 100%;
+      }
+      .size42 {
+        width: 100%;
+        height: 50%;
+      }
+    </style>
+    <div class="layout">
+      <h2>Grid 1</h2>
+      <div class="brick-work">
+        <div class="brick size320"></div>
+        <div class="brick size320"></div>
+        <div class="brick size320"></div>
+        <div class="brick size320"></div>
+        <div class="brick size320"></div>
+        <div class="brick size320"></div>
+      </div>
+    </div>
+    <div class="layout">
+      <h2>Grid 2</h2>
+      <div class="brick-work">
+        <div class="brick size320"></div>
+        <div class="brick size320"></div>
+        <div class="brick size320"></div>
+        <div class="brick size320"></div>
+        <div class="brick size320"></div>
+        <div class="brick size320"></div>
+      </div>
+    </div>
+    <script type="text/javascript">
+        
+      var colors = [
+        "rgba(142, 68, 173,0.4)",
+        "rgba(243, 156, 18,0.4)",
+        "rgba(211, 84, 0,0.4)",
+        "rgba(0, 106, 63,0.4)",
+        "rgba(41, 128, 185,0.4)",
+        "rgba(192, 57, 43,0.4)",
+        "rgba(135, 0, 0,0.4)",
+        "rgba(39, 174, 96,0.4)"
+      ];
+      
+      $(".brick-work .size320").each(function() {
+        var backgroundColor = colors[colors.length * Math.random() << 0];
+        var bricks = $(this).find(".brick");
+        !bricks.length && (bricks = $(this));
+        bricks.css({
+          backgroundColor: backgroundColor
+        });
+      });
+
+      $(function() {
+        $(".brick-work").each(function() {
+          var brick = new brickwork(this);
+          brick.reset({
+            selector: '.size320',
+            cellW: 320,
+            cellH: 320,
+            fixSize: 0,
+            gutterY: 20,
+            gutterX: 20,
+            onResize: function() {
+              brick.fitWidth();
+            }
+          });
+          brick.fitWidth();
+        });
+        $(window).trigger("resize");
+      });
+
+    </script>
