@@ -32,7 +32,7 @@ I have used `gulp-rigger` to organize the code. `src` is the directory where the
 After the installation of the requirement you just need and when you have completed your changes you just need to follow.
 
 + Run `gulp rig` to make to compile the code to `brickwork.js`
-+ Run `gulp uglify` to make both `brickwork.js` and `brickwork.js`
++ Run `gulp uglify` to make both `brickwork.js` and `brickwork.min.js`
 
 ## License
 Released under the MIT license
