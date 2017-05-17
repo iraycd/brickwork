@@ -1,3 +1,5 @@
+# We haven't maintained the project since many years. Anyone interested can take up the project. 
+
 # [BrickWork](http://iraycd.github.io/brickwork/)
 [![Build Status](https://travis-ci.org/iraycd/brickwork.svg?branch=master)](https://travis-ci.org/iraycd/brickwork)
 
